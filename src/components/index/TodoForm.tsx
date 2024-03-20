@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { ITodoCardProps } from "./TodoCard"
+import { v4 } from "uuid"
 
 interface ITodoFormProps {
     setTodo: React.Dispatch<React.SetStateAction<ITodoCardProps[]>>
@@ -16,13 +17,20 @@ const TodoForm:React.FC<ITodoFormProps> = ({
         // prevent default of form
         event.preventDefault();
 
-        // check if there is a text
-        console.log("HIT")
+        // check if there is a text otherwiser alse
+        if (todoText) {
+            setTodo((state) => [
+                ...state,
+                {
+                    id: v4(),
+                    task: todoText,
+                    done: false
+                }
+            ])
+        }
 
-        if (!/^\s+$/.test(todoText)) {
-            // empty text when done
-            console.log("GASD")
-            setTodoText(""); 
+        if (!todoText) {
+            alert("Empty input")
         }
     }
 
