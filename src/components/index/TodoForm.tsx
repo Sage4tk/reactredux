@@ -35,9 +35,9 @@ const TodoForm:React.FC<ITodoFormProps> = ({
     }
 
     return (
-        <form onSubmit={submit_todo}>
-            <input value={todoText} onChange={event => setTodoText(event.target.value)} type="text" />
-            <input type="submit" value="Add" />
+        <form className="mb-4" onSubmit={submit_todo}>
+            <input value={todoText} onChange={event => setTodoText(event.target.value)} type="text" className="mr-4 border py-1 px-2" />
+            <input type="submit" value="Add" className="px-6 py-1 bg-black text-white rounded" />
         </form>
     )
 }
